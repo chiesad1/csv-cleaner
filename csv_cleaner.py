@@ -3,6 +3,12 @@
 
 import csv
 
+#use regex to remove the dollar signs
+#use the pattern \p{Sc}
+
+import re   
+
+
 #open the csv file
 with open ('example.csv', mode = 'r') as file:
 
