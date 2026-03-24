@@ -13,12 +13,14 @@ import re
 def clean_row(row):
     price = row['Price']
     if price =='':
-    #if there is no price put none 
+    #if there is no price put None 
         row['Price'] = None
     else:
-   
+     #For the price row replace $ with nothing and just
+     #leaves the price 
       price = re.sub(r'[^\d.]','', price)
       #price = price.replace('$','')
+      #what was in the price row is now a float
       row['Price'] = float(price)
     return row
     
@@ -29,10 +31,6 @@ with open ('example.csv', mode = 'r') as file:
     #Create a CSV reader object
     csv_reader = csv.DictReader(file)
     
-    #read the header    
-    #header = next(csv_reader)
-    #print(f"Header: {header}")
-
     #Read each row of the CSV file
     for row in csv_reader:
     #old function    
