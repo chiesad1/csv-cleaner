@@ -5,7 +5,7 @@ import csv
 
 #path name so you can output cleaned data 
 
-import os
+
 #imports Regex
 import re
 
@@ -30,18 +30,28 @@ with open ('example.csv', mode = 'r') as file:
 
     #Create a CSV reader object
     csv_reader = csv.DictReader(file)
-    
+   
+    #collect all cleaned rows
+    clean_rows = []
+
     #Read each row of the CSV file
     for row in csv_reader:
     #old function    
     #print(f"Row: {row}")
         #new function
         cleaned = clean_row(row)
+        clean_rows.append(cleaned)
         print(cleaned)
 
 
-f = open("output.txt", "w")
+f = open("output.csv", "w")
 
-print('Hello World', file=f)
-
+# open output file for writing
+with open('output.csv', mode='w', newline='') as f:
+    # use the column names from the first cleaned row as headers
+    writer = csv.DictWriter(f, fieldnames=clean_rows[0].keys())
+    # write the header row
+    writer.writeheader()
+    # write all cleaned rows
+    writer.writerows(clean_rows)
 f.close()

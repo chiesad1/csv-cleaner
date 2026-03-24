@@ -1,1 +1,1 @@
-Hello World
+{'Brands': 'Crocs', 'Item': 'Clog', 'Price': 50.0, 'Status': ''}
