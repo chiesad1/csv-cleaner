@@ -3,17 +3,16 @@
 
 import csv
 
-#use regex to remove the dollar signs
-#use the pattern \p{Sc}
+#path name so you can output cleaned data 
 
-import re   
+import os 
 
 
 #open the csv file
 with open ('example.csv', mode = 'r') as file:
 
     #Create a CSV reader object
-    csv_reader = csv.reader(file)
+    csv_reader = csv.DictReader(file)
     
     #read the header    
     header = next(csv_reader)
@@ -23,3 +22,16 @@ with open ('example.csv', mode = 'r') as file:
     for row in csv_reader:
         print(f"Row: {row}")
 
+price = row['Price']
+if row['Price'] =='':
+    #if there is no price put none 
+        print(f"none")
+else:
+   # converts to float
+       price.replace('$','')
+
+f = open("output.txt", "w")
+
+print('Hello World', file=f)
+
+f.close()
