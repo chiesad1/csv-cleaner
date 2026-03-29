@@ -33,8 +33,9 @@ def main():
 
             #Read each row of the CSV file
             for row in csv_reader:
-                cleaned = clean_row(row)
-                clean_rows.append(cleaned)
+                if any(row.values()):
+                    cleaned = clean_row(row)
+                    clean_rows.append(cleaned)
 
         #Checks that the loops is done and rows are collected
         if not clean_rows:
