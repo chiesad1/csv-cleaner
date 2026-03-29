@@ -44,7 +44,7 @@ with open ('example.csv', mode = 'r') as file:
         print(cleaned)
 
 
-f = open("output.csv", "w")
+#f = open("output.csv", "w")
 
 # open output file for writing
 with open('output.csv', mode='w', newline='') as f:
