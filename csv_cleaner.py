@@ -25,27 +25,30 @@ def clean_row(row):
     return row
     
 
+
+#Error handling for if we can't find the file
+try:
 #open the csv file
-with open ('example.csv', mode = 'r') as file:
+    with open ('example.csv', mode = 'r') as file:
 
-    #Create a CSV reader object
-    csv_reader = csv.DictReader(file)
-   
-    #collect all cleaned rows
-    clean_rows = []
+        #Create a CSV reader object
+        csv_reader = csv.DictReader(file)
+    
+        #collect all cleaned rows
+        clean_rows = []
 
-    #Read each row of the CSV file
-    for row in csv_reader:
-    #old function    
-    #print(f"Row: {row}")
-        #new function
-        cleaned = clean_row(row)
-        clean_rows.append(cleaned)
-        print(cleaned)
-
+        #Read each row of the CSV file
+        for row in csv_reader:
+        #old function    
+        #print(f"Row: {row}")
+            #new function
+            cleaned = clean_row(row)
+            clean_rows.append(cleaned)
+            print(cleaned)
+except:
+    print("We can't find the file")
 
 #f = open("output.csv", "w")
-
 # open output file for writing
 with open('output.csv', mode='w', newline='') as f:
     # use the column names from the first cleaned row as headers
