@@ -1,10 +1,7 @@
-#Should be able to read CSV files and removes empty rows 
+#Should be able to read CSV files 
 #and spits output
 
 import csv
-
-#path name so you can output cleaned data 
-
 
 #imports Regex
 import re
@@ -18,10 +15,9 @@ def clean_row(row):
     else:
      #For the price row replace $ with nothing and just
      #leaves the price 
-      price = re.sub(r'[^\d.]','', price)
-      #price = price.replace('$','')
+        price = re.sub(r'[^\d.]','', price)
       #what was in the price row is now a float
-      row['Price'] = float(price)
+        row['Price'] = float(price)
     return row
     
 
@@ -61,5 +57,4 @@ def main():
     except FileNotFoundError:
         print("We can't find the file")
 if __name__ == "__main__":
-# open output file for writing
     main()
