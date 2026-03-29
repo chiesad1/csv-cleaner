@@ -1,1 +1,3 @@
-# csv-cleaener
+# csv-cleaner
+
+Cleans CSV files
