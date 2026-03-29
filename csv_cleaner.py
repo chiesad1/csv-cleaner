@@ -13,10 +13,9 @@ def clean_row(row):
     #if there is no price put None 
         row['Price'] = None
     else:
-     #For the price row replace $ with nothing and just
-     #leaves the price 
+     #For the price row replace $ with nothing and just leaves the price 
         price = re.sub(r'[^\d.]','', price)
-      #what was in the price row is now a float
+      #changes price to float
         row['Price'] = float(price)
     return row
     
