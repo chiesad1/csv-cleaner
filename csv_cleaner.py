@@ -25,29 +25,30 @@ def clean_row(row):
     return row
     
 
-
+def main():
 #Error handling for if we can't find the file
-try:
+    try:
 #open the csv file
-    with open ('example.csv', mode = 'r') as file:
+        with open ('example.csv', mode = 'r') as file:
 
-        #Create a CSV reader object
-        csv_reader = csv.DictReader(file)
-    
-        #collect all cleaned rows
-        clean_rows = []
+            #Create a CSV reader object
+            csv_reader = csv.DictReader(file)
+            #collect all cleaned rows
+            clean_rows = []
 
-        #Read each row of the CSV file
-        for row in csv_reader:
-        #old function    
-        #print(f"Row: {row}")
-            #new function
-            cleaned = clean_row(row)
-            clean_rows.append(cleaned)
-            print(cleaned)
-except:
-    print("We can't find the file")
+            #Read each row of the CSV file
+            for row in csv_reader:
+                cleaned = clean_row(row)
+                clean_rows.append(cleaned)
 
+        #Checks that the loops is done and rows are collected
+        if not clean_rows:
+            print("No data found in the file.")
+            return
+    except FileNotFoundError:
+        print("We can't find the file")
+if __name__ == "__main__":
+    main()
 #f = open("output.csv", "w")
 # open output file for writing
 with open('output.csv', mode='w', newline='') as f:
