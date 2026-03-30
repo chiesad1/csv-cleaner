@@ -1,10 +1,15 @@
 #Should be able to read CSV files 
-#and spits output
+#and spits output into an output_file
 
 import csv
 
 #imports Regex
 import re
+
+#file inputs and output
+
+input_file = 'example.csv'
+output_file = 'output.csv'
 
 
 def clean_row(row):
@@ -13,9 +18,9 @@ def clean_row(row):
     #if there is no price put None 
         row['Price'] = None
     else:
-     #For the price row replace $ with nothing and just leaves the price 
+        #For the price row replace $ with nothing and just leaves the price 
         price = re.sub(r'[^\d.]','', price)
-      #changes price to float
+        #changes price to float
         row['Price'] = float(price)
     return row
     
@@ -24,7 +29,7 @@ def main():
 #Error handling for if we can't find the file
     try:
 #open the csv file
-        with open ('example.csv', mode = 'r') as file:
+        with open (input_file, mode = 'r') as file:
 
             #Create a CSV reader object
             csv_reader = csv.DictReader(file)
@@ -42,7 +47,7 @@ def main():
             print("No data found in the file.")
             return
 
-        with open('output.csv', mode='w', newline='') as f:
+        with open(output_file, mode='w', newline='') as f:
             # use the column names from the first cleaned row as headers
             writer = csv.DictWriter(f, fieldnames=clean_rows[0].keys())
             # write the header row
